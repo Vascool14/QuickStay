@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[ type="password"] {
+  @apply w-full border my-1 py-2 px-3 rounded-2xl;
+}
+
+button{
+    @apply bg-gray-300 ;
+}
+
+button.primary{
+    @apply p-2 -mt-6 bg-primary w-full text-white rounded-2xl;
+}
