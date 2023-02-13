@@ -1,34 +1,39 @@
 import { Link } from "react-router-dom"
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios'
+import { Navigate } from 'react-router-dom'
 
-export default function LoginPage() {
+export default function LoginPage({ setUser }) {
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ isPasswordVisible , setIsPasswordVisible ] = useState(false);
+    const [ redirect , setRedirect ] = useState(false);
     async function handleLoginSubmit(e){
         e.preventDefault();
         try{
-            await axios.post('/login', {email, password});
+            const {data} = await axios.post('/login', {email, password});
+            setUser(data); 
             alert('Login successful!');
+            setRedirect(true);
         }
         catch(e){
             alert('Error logging in. Please try again later.'); 
         }
     }
+    if(redirect) return (<Navigate to='/' />);
     return (
-    <div className='mt-4 grow flex items-center justify-around'>
-        <div className='mb-28'>
+    <div className='mx-10 mt-4 grow flex items-center justify-around'>
+        <div className='my-32'>
             <h1 className='mb-4 text-4xl text-center'>Login</h1>
             <form action="" className='max-w-md mx-auto'
             onSubmit={handleLoginSubmit}>
-                <input 
+                <input required
                     type="email" 
                     name="email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"/>
-                <input className="-mb-4" 
+                <input className="-mb-4" required
                     name="password" 
                     type={isPasswordVisible? 'text': 'password'}
                     value={password}

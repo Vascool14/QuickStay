@@ -19,13 +19,28 @@
 input[type="text"], 
 input[type="email"], 
 input[ type="password"] {
-  @apply w-full border my-1 py-2 px-3 rounded-2xl;
+  @apply w-full border my-1 py-2 px-3 rounded-2xl focus:scale-x-105 transition-all duration-300;
 }
 
 button{
-    @apply bg-gray-300 ;
+    @apply bg-gray-300 hover:opacity-80 active:scale-95; 
 }
 
 button.primary{
     @apply p-2 -mt-6 bg-primary w-full text-white rounded-2xl;
+}
+
+@media (max-width: 768px) {
+  nav > div:nth-child(n+3){
+    @apply hidden;
+  }
+  nav{
+    @apply gap-2 px-2 mr-2 ml-auto;
+  }
+}
+
+@media (max-width: 500px) {
+  #brand {
+    @apply hidden;
+  }
 }

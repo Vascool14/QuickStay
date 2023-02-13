@@ -18,8 +18,8 @@ export default function RegisterPage() {
         }
     }
     return (
-    <div className='mt-4 grow flex items-center justify-around'>
-        <div className='mb-28'>
+    <div className='mx-10 mt-4 grow flex items-center justify-around'>
+        <div className='my-32'>
             <h1 className='mb-4 text-4xl text-center'>Register</h1>
             <form className='max-w-md mx-auto' 
             onSubmit={registerUser}>
